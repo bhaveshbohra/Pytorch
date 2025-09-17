@@ -1,0 +1,43 @@
+conda activate C:\Users\hp\Desktop\Pytorch\pytorchenv
+
+for activate env 
+
+Tip: If you don’t want to deal with long paths, you can create the env by name instead of -p:
+
+conda create -n pytorchenv python=3.10 -y
+conda activate pytorchenv
+
+Nope 👍 using -p is not wrong at all — it just means the environment will live inside the folder you specify, instead of the global conda envs directory.
+
+The only catch is: when you activate an environment created with -p, you must use the full path, not just the name.
+
+Example with your case
+
+You created:
+
+C:\Users\hp\Desktop\Pytorch\pytorchenv
+
+
+So to activate it, run:
+
+conda activate C:/Users/hp/Desktop/Pytorch/pytorchenv
+
+
+(or with quotes, if spaces exist in the path):
+
+conda activate "C:\Users\hp\Desktop\Pytorch\pytorchenv"
+
+
+That will work ✅
+
+Why it failed earlier
+
+You typed:
+
+conda activate C:\Users\hp\Desktop\Pytorch\pytorchenv
+
+
+but Git Bash (MINGW64) stripped the backslashes →
+C:UsershpDesktopPytorchpytorchenv → invalid path.
+
+Using forward slashes or quotes fixes that.
